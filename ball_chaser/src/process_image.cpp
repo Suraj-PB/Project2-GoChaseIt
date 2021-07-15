@@ -34,7 +34,7 @@ void process_image_callback(const sensor_msgs::Image img)
     bool is_white = false;
     int column = 0;
     for (int i = 0; i < img.height * img.step; i++) {
-        if (img.data[i] == 255) {
+        if (img.data[i] == 255 && img.data[i+1] == 255 && img.data[i+2] == 255) {
             is_white = true;
             ROS_INFO("white ball found");
             column = i % img.step;
